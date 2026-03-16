@@ -1,0 +1,6 @@
+[2026-03-16T18:57:01.252Z] SERVER started on http://localhost:3000
+[2026-03-16T18:57:05.090Z] WORKER initialising — running immediately then scheduling hourly
+[2026-03-16T18:57:05.091Z] WORKER run started
+[2026-03-16T18:57:05.091Z] WORKER task list is empty — nothing to do
+[2026-03-16T18:57:05.091Z] WORKER run finished
+[2026-03-16T18:57:05.094Z] WORKER scheduled: runs every hour at :00. Press Ctrl+C to stop.
