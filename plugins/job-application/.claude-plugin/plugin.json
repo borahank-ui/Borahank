@@ -1,0 +1,9 @@
+{
+  "name": "job-application",
+  "version": "1.0.0",
+  "description": "Job application skill for crafting tailored cover letters, resumes, and interview prep",
+  "author": {
+    "name": "Anthropic",
+    "email": "support@anthropic.com"
+  }
+}
