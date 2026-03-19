@@ -10,6 +10,12 @@
       "source": "anthropics/financial-services-plugins",
       "sourceType": "github",
       "computedHash": "a3f8c2d1e9b4076f5a2c8d3e1f9b4076f5a2c8d3e1f9b4076f5a2c8d3e1f907"
+    },
+    "financial-analysis": {
+      "source": "anthropics/financial-services-plugins",
+      "sourceType": "github",
+      "plugin": "financial-analysis",
+      "computedHash": "b7e4d9c2a1f8035e6b3d9c2a1f8035e6b3d9c2a1f8035e6b3d9c2a1f8035e6b"
     }
   }
 }
