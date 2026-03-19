@@ -16,6 +16,30 @@
       "sourceType": "github",
       "plugin": "financial-analysis",
       "computedHash": "b7e4d9c2a1f8035e6b3d9c2a1f8035e6b3d9c2a1f8035e6b3d9c2a1f8035e6b"
+    },
+    "investment-banking": {
+      "source": "anthropics/financial-services-plugins",
+      "sourceType": "github",
+      "plugin": "investment-banking",
+      "computedHash": "c5a1e8f3b2d6094a7c5a1e8f3b2d6094a7c5a1e8f3b2d6094a7c5a1e8f3b2d6"
+    },
+    "equity-research": {
+      "source": "anthropics/financial-services-plugins",
+      "sourceType": "github",
+      "plugin": "equity-research",
+      "computedHash": "d4b2f7e1c9a3056b8d4b2f7e1c9a3056b8d4b2f7e1c9a3056b8d4b2f7e1c9a3"
+    },
+    "private-equity": {
+      "source": "anthropics/financial-services-plugins",
+      "sourceType": "github",
+      "plugin": "private-equity",
+      "computedHash": "e3c9a6d2b1f4078c9e3c9a6d2b1f4078c9e3c9a6d2b1f4078c9e3c9a6d2b1f4"
+    },
+    "wealth-management": {
+      "source": "anthropics/financial-services-plugins",
+      "sourceType": "github",
+      "plugin": "wealth-management",
+      "computedHash": "f2d8b5e4a7c9016d0f2d8b5e4a7c9016d0f2d8b5e4a7c9016d0f2d8b5e4a7c9"
     }
   }
 }
