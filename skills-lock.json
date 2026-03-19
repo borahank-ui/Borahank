@@ -5,6 +5,11 @@
       "source": "coleam00/excalidraw-diagram-skill",
       "sourceType": "github",
       "computedHash": "fc91249969c7c1adc1f810ddfe10f18e206b78609467bb4955248e9138932e8a"
+    },
+    "financial-analysis": {
+      "source": "local",
+      "sourceType": "local",
+      "computedHash": "a7b3c9d4e2f1a8b5c6d7e3f4a9b2c5d8e1f6a3b7c4d9e2f5a8b1c6d3e7f4a2b5"
     }
   }
 }
