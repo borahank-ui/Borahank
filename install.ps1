@@ -10,6 +10,9 @@ $PackageName    = '@anthropic-ai/claude-code'
 $BinaryName     = 'claude'
 $MinNodeVersion = 18
 $NodeInstallUrl = 'https://nodejs.org/en/download/'
+$PluginName     = 'playground'
+$PluginRegistry = 'claude-plugins-official'
+$PluginPackage  = "@$PluginRegistry/$PluginName"
 
 # ── Helpers ──────────────────────────────────────────────────────────────────
 function Write-Header {
@@ -121,6 +124,29 @@ function Install-ClaudeCode {
     Write-Success "$PackageName installed"
 }
 
+# ── Plugin Install ───────────────────────────────────────────────────────────
+function Install-Plugin([string]$Package, [string]$Name) {
+    Write-Step "Installing plugin $Name ($Package)..."
+    try {
+        & npm install -g $Package 2>&1 | ForEach-Object {
+            if ($_ -match '^(npm warn|npm notice)') { return }
+            Write-Host "    $_" -ForegroundColor DarkGray
+        }
+        if ($LASTEXITCODE -ne 0) {
+            throw "npm exited with code $LASTEXITCODE"
+        }
+    } catch {
+        Write-Host ''
+        Write-Warn "Plugin install failed. Retrying with --prefer-online..."
+        & npm install -g --prefer-online $Package
+        if ($LASTEXITCODE -ne 0) {
+            Write-Warn "Failed to install plugin $Name. You can retry later with: claude plugin install $Name@$PluginRegistry"
+            return
+        }
+    }
+    Write-Success "Plugin '$Name' installed from $PluginRegistry"
+}
+
 # ── Verify ───────────────────────────────────────────────────────────────────
 function Confirm-Install {
     Write-Step "Verifying $BinaryName command..."
@@ -156,6 +182,12 @@ function Write-Summary {
     Write-Host '    claude          - Start Claude Code' -ForegroundColor Cyan
     Write-Host '    claude --help   - Show help' -ForegroundColor Cyan
     Write-Host ''
+    Write-Host '  Plugins installed:' -ForegroundColor White
+    Write-Host "    $PluginName ($PluginPackage)" -ForegroundColor Cyan
+    Write-Host '  Manage plugins:' -ForegroundColor White
+    Write-Host '    claude plugin list                              - List installed plugins' -ForegroundColor Cyan
+    Write-Host '    claude plugin install <name>@<registry>        - Install a plugin' -ForegroundColor Cyan
+    Write-Host ''
     Write-Host '  Docs: https://docs.anthropic.com/en/docs/claude-code' -ForegroundColor DarkGray
     Write-Host ''
 }
@@ -166,5 +198,6 @@ Test-Platform
 Assert-Node
 Assert-Npm
 Install-ClaudeCode
+Install-Plugin $PluginPackage $PluginName
 Confirm-Install
 Write-Summary
