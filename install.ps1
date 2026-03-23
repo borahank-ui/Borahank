@@ -10,6 +10,7 @@ $PackageName    = '@anthropic-ai/claude-code'
 $BinaryName     = 'claude'
 $MinNodeVersion = 18
 $NodeInstallUrl = 'https://nodejs.org/en/download/'
+$SkillsPackage  = 'antigravity-awesome-skills'
 
 # ── Helpers ──────────────────────────────────────────────────────────────────
 function Write-Header {
@@ -146,6 +147,28 @@ function Confirm-Install {
     }
 }
 
+# ── Install Skills / Plugins ─────────────────────────────────────────────────
+function Install-Skills {
+    Write-Step "Installing Claude Code skills ($SkillsPackage)..."
+
+    if (-not (Get-Command npx -ErrorAction SilentlyContinue)) {
+        Write-Warn 'npx not found – skipping skills installation.'
+        return
+    }
+
+    try {
+        $output = & npx $SkillsPackage --claude 2>&1
+        $output | Where-Object { $_ -notmatch '^npm (warn|notice)' } | ForEach-Object {
+            Write-Host "    $_" -ForegroundColor DarkGray
+        }
+        if ($LASTEXITCODE -ne 0) { throw "npx exited with code $LASTEXITCODE" }
+        Write-Success 'Skills installed to ~/.claude/skills'
+    } catch {
+        Write-Warn "Skills installation failed – you can install them manually later:"
+        Write-Host "    npx $SkillsPackage --claude" -ForegroundColor Cyan
+    }
+}
+
 # ── Summary ──────────────────────────────────────────────────────────────────
 function Write-Summary {
     Write-Host ''
@@ -167,4 +190,5 @@ Assert-Node
 Assert-Npm
 Install-ClaudeCode
 Confirm-Install
+Install-Skills
 Write-Summary
