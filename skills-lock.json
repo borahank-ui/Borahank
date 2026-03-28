@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "skills": {
+    "nblm": {
+      "source": "magicseek/nblm",
+      "sourceType": "github",
+      "computedHash": "d61671378fd0c0b2254747eb717c342f6813ce78433bdd8dadb7949a725f62ce"
+    }
+  }
+}
